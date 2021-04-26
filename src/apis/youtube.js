@@ -7,6 +7,8 @@ export default axios.create({
         key: keys.youTubeAPI,
         part: 'snippet',
         maxResults: 10,
-        videosCategoryId: 10
+        videoCategoryId: 10,
+        regionCode: 'BR',
+        type: 'video'
     }
 })
