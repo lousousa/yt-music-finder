@@ -19,12 +19,13 @@ export default class SearchForn extends Component {
         }
     }
 
-    search = async () => {
+    search = async (nextPageToken) => {
         this.setState({ waiting: { search: true } })
 
-        const responseYouTube = await YouTube.get('/search', {
-            params: { q: this.state.term }
-        })
+        let params = { q: this.state.term }
+        if (nextPageToken) params.pageToken = nextPageToken
+
+        const responseYouTube = await YouTube.get('/search', { params })
 
         const responseTicketmaster = await Ticketmaster.get('/events.json', {
             params: { keyword: this.state.term }
@@ -46,6 +47,10 @@ export default class SearchForn extends Component {
 
     clearSearchText = () => {
         this.setState({ term: '' })
+    }
+
+    next = (token) => {
+        this.search(token)
     }
 
     render() {

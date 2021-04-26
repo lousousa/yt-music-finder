@@ -7,6 +7,7 @@ export default class Home extends Component {
 
     constructor(props) {
         super(props)
+        this.searchForm = React.createRef()
         this.state = {
             youTubeData: null,
             ticketmasterData: null
@@ -21,6 +22,10 @@ export default class Home extends Component {
         this.setState({ ticketmasterData: data })
     }
 
+    onNext = () => {
+        this.searchForm.current.next(this.state.youTubeData.nextPageToken)
+    }
+
     render() {
         return (
             <div className="max-w-screen-lg mx-auto h-screen flex flex-wrap justify-center content-center items-center">
@@ -31,13 +36,13 @@ export default class Home extends Component {
                         <span className="text-gray-600 font-thin">&nbsp;Music Finder</span>
                     </h2>
 
-                    <SearchForm onYouTubeData={this.onYouTubeData} onTicketmasterData={this.onTicketmasterData}/>
+                    <SearchForm ref={this.searchForm} onYouTubeData={this.onYouTubeData} onTicketmasterData={this.onTicketmasterData}/>
 
                 </div>
 
                 {this.state.youTubeData &&
                     <div className="mt-4">
-                        <YouTubeList data={this.state.youTubeData}/>
+                        <YouTubeList data={this.state.youTubeData} onNext={this.onNext}/>
                     </div>
                 }
             </div>
