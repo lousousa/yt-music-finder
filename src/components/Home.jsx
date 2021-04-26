@@ -22,7 +22,6 @@ export default class Home extends Component {
     }
 
     render() {
-
         return (
             <div className="max-w-screen-lg mx-auto h-screen flex flex-wrap justify-center content-center items-center">
                 <div className="w-1/2 text-center">
