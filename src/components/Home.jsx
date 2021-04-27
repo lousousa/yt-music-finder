@@ -23,11 +23,11 @@ export default class Home extends Component {
     }
 
     onNext = () => {
-        this.searchForm.current.search(this.state.youTubeData.nextPageToken)
+        this.searchForm.current.search(this.state.youTubeData.nextPageToken, this.state.youTubeData.term)
     }
 
     onPrev = () => {
-        this.searchForm.current.search(this.state.youTubeData.prevPageToken)
+        this.searchForm.current.search(this.state.youTubeData.prevPageToken, this.state.youTubeData.term)
     }
 
     render() {

@@ -19,12 +19,13 @@ export default class SearchForn extends Component {
         }
     }
 
-    search = async (pageToken) => {
+    search = async (pageToken, q) => {
         this.setState({ waiting: { search: true } })
         this.props.onYouTubeData(null)
 
         let params = { q: this.state.term }
         if (pageToken) params.pageToken = pageToken
+        if (q) params.q = q
 
         const responseYouTube = await YouTube.get('/search', { params })
 
@@ -32,9 +33,9 @@ export default class SearchForn extends Component {
             params: { keyword: this.state.term }
         })
         
-        this.props.onYouTubeData(responseYouTube.data)
+        this.props.onYouTubeData({...responseYouTube.data, term: q ? q : this.state.term})
         this.props.onTicketmasterData(responseTicketmaster.data)
-        this.setState({ waiting: { search: false } })
+        this.setState({ term: '', waiting: { search: false } })
     }
 
     handleSubmit = (e) => {
@@ -56,8 +57,8 @@ export default class SearchForn extends Component {
         return (
             <div className="flex justify-center">
                 {isWaitingSearch ?
-                    <Loader className="my-12" type="Oval" color="#ef4444" height={48} width={48} timeout={3000} /> :
-                    <form className="flex flex-wrap mt-12">
+                    <Loader className="my-12" type="Oval" color="#ef4444" height={32} width={32} timeout={3000} /> :
+                    <form className="w-full flex flex-wrap mt-12">
                         <div className="w-full flex rounded-full hover:shadow-md">
             
                             <div className="w-1/6 text-xl text-gray-400 text-center border border-gray-300 rounded-l-full border-r-0 p-2">
