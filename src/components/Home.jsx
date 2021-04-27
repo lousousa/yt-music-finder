@@ -23,7 +23,11 @@ export default class Home extends Component {
     }
 
     onNext = () => {
-        this.searchForm.current.next(this.state.youTubeData.nextPageToken)
+        this.searchForm.current.search(this.state.youTubeData.nextPageToken)
+    }
+
+    onPrev = () => {
+        this.searchForm.current.search(this.state.youTubeData.prevPageToken)
     }
 
     render() {
@@ -42,7 +46,7 @@ export default class Home extends Component {
 
                 {this.state.youTubeData &&
                     <div className="mt-4">
-                        <YouTubeList data={this.state.youTubeData} onNext={this.onNext}/>
+                        <YouTubeList data={this.state.youTubeData} onNext={this.onNext} onPrev={this.onPrev}/>
                     </div>
                 }
             </div>

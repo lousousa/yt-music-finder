@@ -19,11 +19,12 @@ export default class SearchForn extends Component {
         }
     }
 
-    search = async (nextPageToken) => {
+    search = async (pageToken) => {
         this.setState({ waiting: { search: true } })
+        this.props.onYouTubeData(null)
 
         let params = { q: this.state.term }
-        if (nextPageToken) params.pageToken = nextPageToken
+        if (pageToken) params.pageToken = pageToken
 
         const responseYouTube = await YouTube.get('/search', { params })
 
@@ -47,10 +48,7 @@ export default class SearchForn extends Component {
 
     clearSearchText = () => {
         this.setState({ term: '' })
-    }
-
-    next = (token) => {
-        this.search(token)
+        this.props.onYouTubeData(null)
     }
 
     render() {

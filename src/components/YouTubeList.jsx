@@ -21,11 +21,13 @@ const YouTubeList = props => {
     return (
         <div className="w-full flex flex-wrap items-center">
             <div className='w-1/12 text-center'>
-                <InlineIcon className="inline text-6xl text-gray-600 cursor-pointer" icon={chevronLeft} />
+                {props.data.prevPageToken &&
+                    <InlineIcon className="inline text-6xl text-gray-600 cursor-pointer" onClick={props.onPrev} icon={chevronLeft} />}
             </div>
             <div className='w-10/12 flex flex-wrap'>{items}</div>
             <div className='w-1/12 text-center'>
-                <InlineIcon className="inline text-6xl text-gray-600 cursor-pointer" onClick={props.onNext} icon={chevronRight} />
+                {props.data.nextPageToken &&
+                    <InlineIcon className="inline text-6xl text-gray-600 cursor-pointer" onClick={props.onNext} icon={chevronRight} />}
             </div>
         </div>
     )
