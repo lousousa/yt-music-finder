@@ -1,6 +1,11 @@
-# Getting Started with Create React App
+# YouTube Music Finder
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a YouTube API fetching filtered by Music category, which displays it as a video list.
+
+## Featured:
+
+- React
+- Tailwind CSS
 
 ## Available Scripts
 
