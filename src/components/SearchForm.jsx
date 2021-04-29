@@ -25,6 +25,7 @@ export default class SearchForn extends Component {
 
         let params = { q: this.state.term }
         if (pageToken) params.pageToken = pageToken
+        else this.props.setVideo(null)
         if (q) params.q = q
 
         const responseYouTube = await YouTube.get('/search', { params })

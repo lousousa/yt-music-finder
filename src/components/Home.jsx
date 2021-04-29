@@ -32,7 +32,7 @@ export default class Home extends Component {
         this.searchForm.current.search(this.state.youTubeData.prevPageToken, this.state.youTubeData.term)
     }
 
-    onClickThumbnail = (video) => {
+    setVideo = (video) => {
         this.setState({ video })
     }
 
@@ -50,7 +50,11 @@ export default class Home extends Component {
                         <div className="w-full flex justify-center"><VideoPlayer video={this.state.video}/></div>
                     }
 
-                    <SearchForm ref={this.searchForm} onYouTubeData={this.onYouTubeData} onTicketmasterData={this.onTicketmasterData}/>
+                    <SearchForm ref={this.searchForm}
+                        setVideo={this.setVideo}
+                        onYouTubeData={this.onYouTubeData}
+                        onTicketmasterData={this.onTicketmasterData}
+                    />
 
                 </div>
                 
@@ -60,7 +64,7 @@ export default class Home extends Component {
                             data={this.state.youTubeData}
                             onNext={this.onNext}
                             onPrev={this.onPrev}
-                            onClickThumbnail={this.onClickThumbnail}
+                            onClickThumbnail={this.setVideo}
                         />
                     </div>
                 }
