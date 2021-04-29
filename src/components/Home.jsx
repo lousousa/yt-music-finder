@@ -39,9 +39,9 @@ export default class Home extends Component {
     render() {
         return (
             <div className="max-w-screen-lg mx-auto min-h-screen flex flex-wrap justify-center py-6 px-4 content-center items-center">
-                <div className="w-2/3 text-center">
+                <div className="w-full sm:w-2/3 text-center">
 
-                    <h2 className="text-5xl">
+                    <h2 className="text-3xl sm:text-5xl">
                         <span className="font-bold text-red-500">YouTube</span>
                         <span className="text-gray-600 font-thin">&nbsp;Music Finder</span>
                     </h2>
