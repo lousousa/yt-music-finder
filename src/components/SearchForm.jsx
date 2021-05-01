@@ -29,13 +29,15 @@ export default class SearchForn extends Component {
         if (q) params.q = q
 
         const responseYouTube = await YouTube.get('/search', { params })
-
-        const responseTicketmaster = await Ticketmaster.get('/events.json', {
-            params: { keyword: this.state.term }
-        })
-        
         this.props.onYouTubeData({...responseYouTube.data, term: q ? q : this.state.term})
-        this.props.onTicketmasterData(responseTicketmaster.data)
+
+        if (! pageToken) {
+            const responseTicketmaster = await Ticketmaster.get('/events.json', {
+                params: { keyword: this.state.term }
+            })
+            this.props.onTicketmasterData(responseTicketmaster.data)
+        }
+
         this.setState({ term: '', waiting: { search: false } })
     }
 
