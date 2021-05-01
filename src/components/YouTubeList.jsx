@@ -6,22 +6,20 @@ import chevronRight from '@iconify/icons-jam/chevron-right'
 
 const YouTubeList = props => {
     
-    const items = props.data.items.map(item => {
-        return (
-            <div key={item.id.videoId} className="w-full sm:w-1/4 p-2">
-                <div className="cursor-pointer" value={item.id.videoId}
-                    onClick={() => props.onClickThumbnail({
-                        url: `https://www.youtube.com/embed/${ item.id.videoId }`,
-                        title: item.snippet.title,
-                        channelTitle: item.snippet.channelTitle
-                    })}>
-                    <img className="w-full" width='320' src={item.snippet.thumbnails.medium.url} alt={item.snippet.title}/>
-                    <h1 className="font-bold" dangerouslySetInnerHTML={{__html: item.snippet.title}}></h1>
-                    <h2 className="text-gray-500">{item.snippet.channelTitle}</h2>
-                </div>
+    const items = props.data.items.map(item => (
+        <div key={item.id.videoId} className="w-full sm:w-1/4 p-2">
+            <div className="cursor-pointer" value={item.id.videoId}
+                onClick={() => props.onClickThumbnail({
+                    url: `https://www.youtube.com/embed/${ item.id.videoId }`,
+                    title: item.snippet.title,
+                    channelTitle: item.snippet.channelTitle
+                })}>
+                <img className="w-full" width='320' src={item.snippet.thumbnails.medium.url} alt={item.snippet.title}/>
+                <h1 className="font-bold" dangerouslySetInnerHTML={{__html: item.snippet.title}}></h1>
+                <h2 className="text-gray-500">{item.snippet.channelTitle}</h2>
             </div>
-        )
-    })
+        </div>
+    ))
 
     return (
         <div className="w-full flex flex-wrap items-center">

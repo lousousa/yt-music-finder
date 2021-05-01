@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import SearchForm from './SearchForm'
 import VideoPlayer from './VideoPlayer'
 import YouTubeList from './YouTubeList'
+import EventsList from './EventsList'
 
 export default class Home extends Component {
 
@@ -59,13 +60,19 @@ export default class Home extends Component {
                 </div>
                 
                 {this.state.youTubeData &&
-                    <div className="mt-4">
+                    <div className="w-full mt-4">
                         <YouTubeList
                             data={this.state.youTubeData}
                             onNext={this.onNext}
                             onPrev={this.onPrev}
                             onClickThumbnail={this.setVideo}
                         />
+                    </div>
+                }
+
+                {this.state.ticketmasterData && this.state.ticketmasterData.page.totalElements > 0 &&
+                    <div className="w-full mt-4">
+                        <EventsList data={this.state.ticketmasterData}/>
                     </div>
                 }
             </div>
