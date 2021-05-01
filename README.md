@@ -1,6 +1,6 @@
 # YouTube Music Finder
 
-This project is a YouTube API fetching filtered by Music category, which displays it as a video list.
+This project is a YouTube / Ticketmaster API fetching filtered by Music category, which displays it as a video list.
 
 ## Featured:
 
