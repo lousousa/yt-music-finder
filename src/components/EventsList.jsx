@@ -1,4 +1,5 @@
 import React from 'react'
+import moment from 'moment'
 
 const EventsList = props => {
 
@@ -6,8 +7,8 @@ const EventsList = props => {
         <div className="w-1/2 sm:w-1/4 md:w-1/5 p-2">
             <img alt={item.name} src={item.images[0].url}/>
             <p className="font-bold">{item.name}</p>
-            <p>{item.dates.start.localDate}</p>
-            <p>{item.dates.start.localTime}</p>
+            <p>{moment(item.dates.start.localDate, 'YYYY-MM-DD').format('YYYY.MM.DD')}</p>
+            <p>{moment(item.dates.start.localTime, 'HH:mm:ss').format('HH:mm')}</p>
             <p><a className="text-blue-600 underline" target="_blank" rel="noreferrer" href={item.url}>Buy ticket</a></p>
         </div>
     ))

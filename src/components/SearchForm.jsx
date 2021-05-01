@@ -22,6 +22,7 @@ export default class SearchForn extends Component {
     search = async (pageToken, q) => {
         this.setState({ waiting: { search: true } })
         this.props.onYouTubeData(null)
+        if (! pageToken) this.props.onTicketmasterData(null)
 
         let params = { q: this.state.term }
         if (pageToken) params.pageToken = pageToken
